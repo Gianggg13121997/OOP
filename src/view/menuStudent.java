@@ -15,6 +15,8 @@ public class menuStudent {
             System.out.println("2. Sửa thông tin sinh viên");
             System.out.println("3. Xóa sinh viên");
             System.out.println("4. Hiển thị danh sách sinh viên");
+            System.out.println("5. Tìm các sinh viên có cùng idClazz :");
+            System.out.println("6.Tìm sinh viên theo tên gần đúng:");
             System.out.println("0. Thoát chương trình");
             System.out.print("Nhập lựa chọn: ");
             choice = Input.inputInteger();
@@ -30,6 +32,12 @@ public class menuStudent {
                     break;
                 case 4:
                     showMenuDisplay();
+                    break;
+                case 5 :
+                    showMenuFindByIdClazz();
+                    break;
+                case 6 :
+                    showMenuFindByName();
                     break;
                 case 0:
                     System.out.println("Thoát chương trình quản lý sinh viên!");
@@ -88,8 +96,6 @@ public class menuStudent {
         System.out.println("====Menu Delete========");
         System.out.print("Nhập id sinh viên cần xóa: ");
         int id = Input.inputInteger();
-
-        // Kiểm tra xem sinh viên với id có tồn tại không
         student existingStudent = studentManage.findIndexById(id) != -1 ? studentManage.getAll().get(studentManage.findIndexById(id)) : null;
         if (existingStudent != null) {
             studentManage.delete(id);
@@ -103,6 +109,25 @@ public class menuStudent {
         System.out.println("====Danh sách sinh viên====");
         for (student s : studentManage.getAll()) {
             System.out.println(s);
+        }
+    }
+    private void showMenuFindByIdClazz(){
+        System.out.println("Nhập Id Clazz :");
+        int idClazz = Input.inputInteger();
+        for (student s : studentManage.getAll()) {
+            if (s.getIdClazz() == idClazz) {
+                System.out.println(s);
+            }
+        }
+    }
+    private void showMenuFindByName(){
+        System.out.println("Nhập tên sinh viên : ");
+        String name = Input.inputString();
+        for (student s : studentManage.getAll()) {
+            if (s.getName().equals(name)) {
+                System.out.println(s);
+            }
+
         }
     }
 }

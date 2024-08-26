@@ -9,16 +9,18 @@ import java.util.Objects;
 public class ReadAndWriteStudent {
     private File file = new File("data/student.csv");
     public void writeFile(ArrayList<student> list) {
-        try {
-            FileWriter fileWriter = new FileWriter(file);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            String line = "";
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))) {
             for (student student : list) {
-                line += student.getId() + ","+student.getName()+","+student.getScore()+","+student.getGender()+","+student.getConduct()+","+student.getIdClazz();
+                String line = student.getId() + "," +
+                        student.getName() + "," +
+                        student.getScore() + "," +
+                        student.getGender() + "," +
+                        student.getConduct() + "," +
+                        student.getIdClazz();
+                bufferedWriter.write(line);
+                bufferedWriter.newLine();
             }
-            bufferedWriter.write(line);
-            bufferedWriter.close();
-        } catch (IOException e) {
+            } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }

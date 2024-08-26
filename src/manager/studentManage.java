@@ -8,15 +8,16 @@ import java.util.List;
 
 public class studentManage implements IManage<student>{
     private ArrayList<student> students;
-    private ReadAndWriteStudent readAndWriteStudent;
+    private  ReadAndWriteStudent readAndWriteStudent;
     public studentManage() {
-        this.students = this.readAndWriteStudent.readFile();
+        this.readAndWriteStudent = new ReadAndWriteStudent();
+        this.students = new ArrayList<>();
     }
+
     @Override
     public void add(student student) {
-        this.students.add(student);
+        students.add(student);
         readAndWriteStudent.writeFile(this.students);
-
     }
 
     @Override
@@ -30,8 +31,12 @@ public class studentManage implements IManage<student>{
     @Override
     public void delete(int id) {
         int index = findIndexById(id);
-        this.students.remove(index);
-        readAndWriteStudent.writeFile(this.students);
+        if (index != -1) {
+            this.students.remove(index);
+            readAndWriteStudent.writeFile(this.students);
+        } else {
+            System.out.println("sinh viên với ID " + id + " không tìm thấy.");
+        }
 
     }
 
@@ -48,5 +53,23 @@ public class studentManage implements IManage<student>{
                 return i;
             }
         }return -1;
+    }
+    public List<student> findByIdClazz(int idClazz) {
+        List<student> result = new ArrayList<>();
+        for (student student : this.students) {
+            if (student.getIdClazz() == idClazz) {
+                result.add(student);
+            }
+        }
+       return result;
+    }
+    public List<student> findByName(String name) {
+        List<student> result = new ArrayList<>();
+        for (student student : this.students) {
+            if (student.getName() != null && student.getName().toLowerCase().contains(name.toLowerCase())) {
+                result.add(student);
+            }
+        }
+        return result;
     }
 }

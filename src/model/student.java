@@ -71,7 +71,7 @@ public class student {
                 ", name='" + name + '\'' +
                 ", score=" + score +
                 ", gender='" + gender + '\'' +
-                ", conduct='" + conduct + '\'' +
-                '}';
+                ", conduct='" + conduct + '\''+", id class = "
+                +idClazz + '}';
     }
 }
