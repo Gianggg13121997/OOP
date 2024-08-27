@@ -32,7 +32,7 @@ public class menuClazz {
                     showMenuDisplay();
                     break;
                 case 0:
-                    System.out.println("Thoát chương trình quản lý lớp học!");
+                    System.out.println("Thoát chương trình :");
                     break;
                 default:
                     System.out.println("Không có lựa chọn phù hợp!");
@@ -43,16 +43,16 @@ public class menuClazz {
     }
 
     private void showMenuAdd() {
-        System.out.println("====Menu Add========");
-        System.out.println("Nhap id :");
+        System.out.println("====Menu thêm mới lớp học :========");
+        System.out.println("Nhập id :");
         int id = Input.inputInteger();
-        System.out.println("Nhap ten lop :");
+        System.out.println("Nhập tên lớp  :");
         String name = Input.inputString();
-        System.out.println("Nhap khoi :");
+        System.out.println("Nhập khối :");
         String grade = Input.inputString();
         clazz clazz = new clazz(id, name, grade);
         classManage.add(clazz);
-        System.out.println("them thanh cong !");
+        System.out.println(" Thêm thông tin lớp thành công !");
 
 
     }
@@ -69,9 +69,9 @@ public class menuClazz {
             String newGrade = Input.inputString();
             clazz updatedClass = new clazz(id, newName, newGrade);
             classManage.update(id, updatedClass);
-            System.out.println("Lớp học đã được cập nhật thành công!");
+            System.out.println("Lớp học đã được sửa thành công!");
         } else {
-            System.out.println("Lớp học với ID " + id + " không tồn tại.");
+            System.out.println("Lớp học có ID " + id + " không tồn tại.");
         }
     }
     private void showMenuDelete() {

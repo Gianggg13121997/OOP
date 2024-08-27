@@ -37,9 +37,9 @@ public class clazz {
 
     @Override
     public String toString() {
-        return "id=" + id +
-                ", name='" + name + '\'' +
-                ", grade='" + grade + '\'' +
+        return "id :" + id +
+                ", tên lớp :'" + name + '\'' +
+                ", khối :'" + grade + '\'' +
                 '}';
     }
 }

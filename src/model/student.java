@@ -67,11 +67,11 @@ public class student {
 
     @Override
     public String toString() {
-        return "id=" + id +
-                ", name='" + name + '\'' +
-                ", score=" + score +
-                ", gender='" + gender + '\'' +
-                ", conduct='" + conduct + '\''+", id class = "
-                +idClazz + '}';
+        return "id :" + id +
+                ", tên :'" + name + '\'' +
+                ", điểm :" + score +
+                ", giới tính : '" + gender + '\'' +
+                ", hạnh kiểm : " + conduct + '\''+", idClazz : "
+                +idClazz;
     }
 }
