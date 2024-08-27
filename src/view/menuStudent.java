@@ -33,10 +33,10 @@ public class menuStudent {
                 case 4:
                     showMenuDisplay();
                     break;
-                case 5 :
+                case 5:
                     showMenuFindByIdClazz();
                     break;
-                case 6 :
+                case 6:
                     showMenuFindByName();
                     break;
                 case 0:
@@ -111,7 +111,8 @@ public class menuStudent {
             System.out.println(s);
         }
     }
-    private void showMenuFindByIdClazz(){
+
+    private void showMenuFindByIdClazz() {
         System.out.println("Nhập Id Clazz :");
         int idClazz = Input.inputInteger();
         for (student s : studentManage.getAll()) {
@@ -120,14 +121,21 @@ public class menuStudent {
             }
         }
     }
-    private void showMenuFindByName(){
-        System.out.println("Nhập tên sinh viên : ");
-        String name = Input.inputString();
-        for (student s : studentManage.getAll()) {
-            if (s.getName().equals(name)) {
-                System.out.println(s);
-            }
 
+    private void showMenuFindByName() {
+        System.out.println("Nhập tên sinh viên : ");
+        String namePart = Input.inputString().toLowerCase();
+        boolean found = false;
+
+        for (student s : studentManage.getAll()) {
+            if (s.getName().toLowerCase().contains(namePart)) {
+                System.out.println(s);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Không tìm thấy sinh viên với tên gần đúng.");
         }
     }
 }
